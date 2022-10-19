@@ -1,0 +1,27 @@
+{
+  "name": "Array map",
+  "date": "2022-10-19T14:03:50.279Z",
+  "version": "1.0.0",
+  "results": [
+    {
+      "name": "js-utils map",
+      "ops": 4889480,
+      "margin": 2.39,
+      "percentSlower": 95.24
+    },
+    {
+      "name": "native map",
+      "ops": 102683703,
+      "margin": 1.8,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "native map",
+    "index": 1
+  },
+  "slowest": {
+    "name": "js-utils map",
+    "index": 0
+  }
+}

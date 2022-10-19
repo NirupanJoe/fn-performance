@@ -11,5 +11,8 @@
   "dependencies": {
     "@laufire/utils": "^3.0.0-0",
     "benchmark": "^2.1.4"
+  },
+  "devDependencies": {
+    "benny": "^3.7.1"
   }
 }
