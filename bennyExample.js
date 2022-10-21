@@ -1,5 +1,5 @@
 const { suite, add, cycle, complete, save } = require('benny');
-const { map } = require('@laufire/utils/collection')
+const { map, filter } = require('@laufire/utils/collection')
 
 const numbers = [1, 2, 3, 4];
 
@@ -17,6 +17,19 @@ const suites = [
 			},
 		]
 	},
+	{
+		title: 'Array filter',
+		tests: [
+			{
+				name: 'js-utils filter',
+				test: () => filter(numbers, (num) => num % 2)
+			},
+			{
+				name: 'native filter',
+				test: () => numbers.filter((num) => num % 2),
+			},
+		]
+	},
 ];
 
 suites.forEach(({ tests, title }) => {
@@ -25,7 +38,7 @@ suites.forEach(({ tests, title }) => {
 
 		...tests.map(({ test, name }) =>
 			add(name, test)),
-			
+
 		cycle(),
 		complete(),
 		save({ file: title, version: '1.0.0' }),

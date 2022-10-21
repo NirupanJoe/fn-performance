@@ -1,0 +1,27 @@
+{
+  "name": "Array filter",
+  "date": "2022-10-21T04:23:29.183Z",
+  "version": "1.0.0",
+  "results": [
+    {
+      "name": "js-utils filter",
+      "ops": 20237150,
+      "margin": 0.9,
+      "percentSlower": 63.31
+    },
+    {
+      "name": "native filter",
+      "ops": 55164053,
+      "margin": 1.5,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "native filter",
+    "index": 1
+  },
+  "slowest": {
+    "name": "js-utils filter",
+    "index": 0
+  }
+}
