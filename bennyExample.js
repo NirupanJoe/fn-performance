@@ -3,6 +3,8 @@ const { map, filter } = require('@laufire/utils/collection')
 
 const numbers = [1, 2, 3, 4];
 
+const odd = (value) => value % 2; 
+
 const suites = [
 	{
 	  title: 'Array map',
@@ -22,11 +24,11 @@ const suites = [
 		tests: [
 			{
 				name: 'js-utils filter',
-				test: () => filter(numbers, (num) => num % 2)
+				test: () => filter(numbers, odd)
 			},
 			{
 				name: 'native filter',
-				test: () => numbers.filter((num) => num % 2),
+				test: () => numbers.filter(odd),
 			},
 		]
 	},
