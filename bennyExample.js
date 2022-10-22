@@ -1,5 +1,5 @@
 const { suite, add, cycle, complete, save } = require('benny');
-const { map, filter, find } = require('@laufire/utils/collection')
+const { map, filter, find, reduce } = require('@laufire/utils/collection')
 
 const numbers = [1, 2, 3, 4];
 
@@ -42,6 +42,19 @@ const suites = [
 			{
 				name: 'native find',
 				test: () => numbers.find(odd),
+			},
+		]
+	},
+	{
+		title: 'Array reduce',
+		tests: [
+			{
+				name: 'js-utils reduce',
+				test: () => reduce(numbers, (acc, curr) => acc.concat(curr + 2), []),
+			},
+			{
+				name: 'native reduce',
+				test: () => numbers.reduce((acc, curr) => acc.concat(curr + 2), []),
 			},
 		]
 	},
