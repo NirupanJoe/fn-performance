@@ -1,5 +1,5 @@
 const { suite, add, cycle, complete, save } = require('benny');
-const { map, filter } = require('@laufire/utils/collection')
+const { map, filter, find } = require('@laufire/utils/collection')
 
 const numbers = [1, 2, 3, 4];
 
@@ -29,6 +29,19 @@ const suites = [
 			{
 				name: 'native filter',
 				test: () => numbers.filter(odd),
+			},
+		]
+	},
+	{
+		title: 'Array find',
+		tests: [
+			{
+				name: 'js-utils find',
+				test: () => find(numbers, odd)
+			},
+			{
+				name: 'native find',
+				test: () => numbers.find(odd),
 			},
 		]
 	},
