@@ -18,6 +18,20 @@ const loopFind = (data) => {
 		return data[index];
 	};
 
+const loopFilter = (data) => {
+	let index = 0;
+	let result = [];
+
+	while (index < data.length) {
+		index++;
+
+		odd(data[index], index, data)
+			&& result.push(data[index]);
+	}
+
+	return result;
+};
+
 const suites = [
 	{
 	  title: 'Array map',
@@ -42,6 +56,10 @@ const suites = [
 			{
 				name: 'native filter',
 				test: () => numbers.filter(odd),
+			},
+			{
+				name: 'loop filter',
+				test: () => loopFilter(numbers),
 			},
 		]
 	},
