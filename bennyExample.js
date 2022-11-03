@@ -95,7 +95,7 @@ const suites = [
 			},
 			{
 				name: 'loop filter',
-				test: () => loopFilter(numbers),
+				test: () => loopFilter(numbers, odd),
 			},
 		]
 	},
@@ -144,7 +144,5 @@ suites.forEach(({ tests, title }) => {
 
 		cycle(),
 		complete(),
-		save({ file: title, version: '1.0.0' }),
-		save({ file: title, format: 'chart.html' }),
 	)
 });
