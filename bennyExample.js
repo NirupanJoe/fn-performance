@@ -1,11 +1,17 @@
 const { suite, add, cycle, complete, save } = require('benny');
 const { map, filter, find, reduce, range } = require('@laufire/utils/collection');
-const { rndBetween } = require('@laufire/utils/random');
+const { rndBetween, rndString } = require('@laufire/utils/random');
+const { isArray } = require('@laufire/utils/reflection');
+
+const obj = range(0, 100).reduce(( acc, value, i, array) =>
+	({ ...acc, [rndString()]:rndBetween(1, array.length)}), {}
+);
 
 const numbers = range(0, 100).map((value, i, array) =>
 rndBetween(1, array.length));
 
 const odd = (value) => value % 2;
+
 const loopFind = (data) => {
 		let index = 0;
 
@@ -43,6 +49,21 @@ const newFind = (collection, predicate) => {
 	return collection[index];
 };
 
+const forinLoop = (collection, cb)  => {
+	const result = {};
+	for (const key in collection) {
+
+		collection.hasOwnProperty(key) && (result[key] = cb(collection[key], key, collection));
+
+	}
+	return result;
+};
+
+const newMap = (collection, cb) => 
+	isArray(collection) 
+			? collection.map(cb)
+			: forinLoop(collection, cb);
+
 const suites = [
 	{
 	  title: 'Array map',
@@ -54,6 +75,10 @@ const suites = [
 			{
 				name: 'native map',
 				test: () => numbers.map(odd),
+			},
+			{
+				name: 'new map',
+				test: () => newMap(obj,odd),
 			},
 		]
 	},
