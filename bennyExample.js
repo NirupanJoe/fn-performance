@@ -6,7 +6,6 @@ const numbers = range(0, 100).map((value, i, array) =>
 rndBetween(1, array.length));
 
 const odd = (value) => value % 2;
-
 const loopFind = (data) => {
 		let index = 0;
 
@@ -18,18 +17,30 @@ const loopFind = (data) => {
 		return data[index];
 	};
 
-const loopFilter = (data) => {
+const loopFilter = (data, cb) => {
 	let index = 0;
 	let result = [];
 
 	while (index < data.length) {
+		
+		cb(data[index], index, data)
+		&& result.push(data[index]);
+		
 		index++;
-
-		odd(data[index], index, data)
-			&& result.push(data[index]);
 	}
 
 	return result;
+};
+
+const newFind = (collection, predicate) => {
+	let index = 0;
+
+	while(index < collection.length && !predicate(
+		collection[index], index, collection
+	))
+		index++;
+
+	return collection[index];
 };
 
 const suites = [
@@ -76,7 +87,11 @@ const suites = [
 			},
 			{
 				name: 'loop find',
-				test: () => loopFind(numbers),
+				test: () => loopFind(numbers, odd),
+			},
+			{
+				name: 'new find',
+				test: () => newFind(numbers, odd),
 			},
 		]
 	},
