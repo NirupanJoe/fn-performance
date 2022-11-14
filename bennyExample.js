@@ -51,6 +51,7 @@ const newFind = (collection, predicate) => {
 
 const forinLoop = (collection, cb)  => {
 	const result = {};
+	Object.assign(result, collection )
 	for (const key in collection) {
 
 		collection.hasOwnProperty(key) && (result[key] = cb(collection[key], key, collection));
@@ -77,62 +78,66 @@ const suites = [
 				test: () => numbers.map(odd),
 			},
 			{
+				name: 'forin',
+				test: () => forinLoop(obj,odd),
+			},
+			{
 				name: 'new map',
 				test: () => newMap(obj,odd),
 			},
 		]
 	},
-	{
-		title: 'Array filter',
-		tests: [
-			{
-				name: 'js-utils filter',
-				test: () => filter(numbers, odd)
-			},
-			{
-				name: 'native filter',
-				test: () => numbers.filter(odd),
-			},
-			{
-				name: 'loop filter',
-				test: () => loopFilter(numbers, odd),
-			},
-		]
-	},
-	{
-		title: 'Array find',
-		tests: [
-			{
-				name: 'js-utils find',
-				test: () => find(numbers, odd)
-			},
-			{
-				name: 'native find',
-				test: () => numbers.find(odd),
-			},
-			{
-				name: 'loop find',
-				test: () => loopFind(numbers, odd),
-			},
-			{
-				name: 'new find',
-				test: () => newFind(numbers, odd),
-			},
-		]
-	},
-	{
-		title: 'Array reduce',
-		tests: [
-			{
-				name: 'js-utils reduce',
-				test: () => reduce(numbers, (acc, curr) => acc.concat(curr + 2), []),
-			},
-			{
-				name: 'native reduce',
-				test: () => numbers.reduce((acc, curr) => acc.concat(curr + 2), []),
-			},
-		]
-	},
+	// {
+	// 	title: 'Array filter',
+	// 	tests: [
+	// 		{
+	// 			name: 'js-utils filter',
+	// 			test: () => filter(numbers, odd)
+	// 		},
+	// 		{
+	// 			name: 'native filter',
+	// 			test: () => numbers.filter(odd),
+	// 		},
+	// 		{
+	// 			name: 'loop filter',
+	// 			test: () => loopFilter(numbers, odd),
+	// 		},
+	// 	]
+	// },
+	// {
+	// 	title: 'Array find',
+	// 	tests: [
+	// 		{
+	// 			name: 'js-utils find',
+	// 			test: () => find(numbers, odd)
+	// 		},
+	// 		{
+	// 			name: 'native find',
+	// 			test: () => numbers.find(odd),
+	// 		},
+	// 		{
+	// 			name: 'loop find',
+	// 			test: () => loopFind(numbers, odd),
+	// 		},
+	// 		{
+	// 			name: 'new find',
+	// 			test: () => newFind(numbers, odd),
+	// 		},
+	// 	]
+	// },
+	// {
+	// 	title: 'Array reduce',
+	// 	tests: [
+	// 		{
+	// 			name: 'js-utils reduce',
+	// 			test: () => reduce(numbers, (acc, curr) => acc.concat(curr + 2), []),
+	// 		},
+	// 		{
+	// 			name: 'native reduce',
+	// 			test: () => numbers.reduce((acc, curr) => acc.concat(curr + 2), []),
+	// 		},
+	// 	]
+	// },
 ];
 
 suites.forEach(({ tests, title }) => {
