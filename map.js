@@ -4,9 +4,7 @@ const { performanceTest , odd, obj, numbers } = require("./bennyExample");
 
 const forinLoop = (collection, cb) => {
 	const result = {};
-	Object.assign(result, collection )
 	for (const key in collection) {
-
 		collection.hasOwnProperty(key) && (result[key] = cb(collection[key], key, collection));
 
 	}
@@ -32,8 +30,25 @@ const suites = [
 				test: () => numbers.map(odd),
 			},
 			{
-				name: 'forin',
-				test: () => forinLoop(obj,odd),
+				name: 'new map',
+				test: () => newMap(numbers,odd),
+			},
+		]
+	},
+	{
+		title: 'object map',
+		tests: [
+			{
+				name: 'js-utils map',
+				test: () => map(obj, odd)
+			},
+			{
+				name: 'new map',
+				test: () => newMap(obj,odd),
+			},
+			{
+				name: 'js-utils map',
+				test: () => map(obj, odd)
 			},
 			{
 				name: 'new map',
